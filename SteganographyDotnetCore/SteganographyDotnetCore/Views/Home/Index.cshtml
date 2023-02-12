@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Steganography Encode/Decode";
+}
+
+<app-root>
+    <div class="page-loder">
+        <div class="loader"></div>
+    </div>
+</app-root>
+
+<environment names="Development">
+    <script type="text/javascript" src="~/dist/steganography/runtime.js"></script>
+    <script type="text/javascript" src="~/dist/steganography/polyfills.js"></script>
+    <script type="text/javascript" src="~/dist/steganography/vendor.js"></script>
+    <script type="text/javascript" src="~/dist/steganography/main.js"></script>
+</environment>

@@ -1,0 +1,39 @@
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@function escape-svg($icon, $color: #343a40) {
+  $string: str-replace(map-get($svg-icons, $icon), 'fillColor', $color);
+
+  @if str-index($string, 'data:image/svg+xml') {
+    @each $char, $encoded in $escaped-characters {
+      @if str-index($string, 'url(') == 1 {
+        $string: url('#{str-replace(str-slice($string, 6, -3), $char, $encoded)}');
+      } @else {
+        $string: str-replace($string, $char, $encoded);
+      }
+    }
+  }
+
+  @return $string;
+}
+
+@function color-yiq($color, $dark: #212529, $light: $white) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 150) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}

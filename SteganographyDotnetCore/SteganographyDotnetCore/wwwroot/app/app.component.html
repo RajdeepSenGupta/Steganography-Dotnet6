@@ -1,0 +1,141 @@
+<div class="main">
+  <div class="head">
+    <div class="head-container">
+      <p class="head-text">Steganography</p>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="body-container">
+      <div class="loader" [hidden]="!isLoading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+
+      <mat-tab-group mat-stretch-tabs (selectedTabChange)="clearForm()">
+        <mat-tab label="Home">
+          <div class="description-head">
+            <h3>What is Steganography?</h3>
+          </div>
+          <div class="description-body">
+            <p>
+              Steganography is the technique of hiding secret data within an ordinary, non-secret, file or message in order to avoid detection;
+              the secret data is then extracted at its destination. The use of steganography can be combined with encryption as an extra step for hiding or protecting data.
+              The word steganography is derived from the Greek words steganos (meaning hidden or covered) and the Greek root graph (meaning to write).
+            </p>
+            <p>
+              Steganography can be used to conceal almost any type of digital content, including text, image, video or audio content; the data to be hidden can be hidden inside
+              almost any other type of digital content. The content to be concealed through steganography -- called hidden text -- is often encrypted before being incorporated into
+              the innocuous-seeming cover text file or data stream. If not encrypted, the hidden text is commonly processed in some way in order to increase the difficulty of
+              detecting the secret content.
+            </p>
+          </div>
+
+          <div class="description-head">
+            <h3>How is steganography used today?</h3>
+          </div>
+          <div class="description-body">
+            <p>
+              In modern digital steganography, data is first encrypted or obfuscated in some other way and then inserted, using a special algorithm, into data that is part of a
+              particular file format such as a JPEG image, audio or video file. The secret message can be embedded into ordinary data files in many different ways.
+              One technique is to hide data in bits that represent the same color pixels repeated in a row in an image file. By applying the encrypted data to this
+              redundant data in some inconspicuous way, the result will be an image file that appears identical to the original image but that has "noise" patterns of regular,
+              unencrypted data.
+            </p>
+          </div>
+
+          <div class="description-head">
+            <h3>Practical example</h3>
+          </div>
+          <div class="description-body">
+            <p>
+              In our application, we have used a very basic technique of storing any text data into an image file. We converted the image into pixels, where each pixel consists of
+              3 colors, viz. Red, Green and Blue. Then we break the text to bits and store each bit in each of the color of each pixel. To represent the ending of an encryption
+              of a text inside an image, we store eight consecutive 0 bits.
+            </p>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Encode">
+          <div class="encode-tab-main-body">
+            <div class="center">
+              <h2>Encode Text</h2>
+            </div>
+            <div class="center">
+              <div class="encode-tab-image-container">
+                <div class="center">
+                  <h5>Original Image</h5>
+                </div>
+                <div class="center">
+                  <img class="image" [src]="originalImageName ? originalImageBase64Data : defaultImageFilePath" />
+                </div>
+                <div class="center" (click)="uploadFile.click();uploadFile.value=null">
+                  <button mat-raised-button color="primary">
+                    <mat-icon>upload</mat-icon>
+                    Upload Image
+                  </button>
+                  <input #uploadFile (change)="uploadOriginalImage($event.target.files[0])" type="file" accept="image/png, image/gif, image/jpeg" hidden />
+                </div>
+              </div>
+              <div class="encode-tab-image-container">
+                <div class="center">
+                  <h5>Encoded Image</h5>
+                </div>
+                <div class="center">
+                  <img class="image" [src]="encodedImageName ? encodedImageBase64Data : defaultImageFilePath" />
+                </div>
+                <div class="center">
+                  <button mat-raised-button (click)="downloadEncodedImage()" [disabled]="!encodedImageName">
+                    <mat-icon>download</mat-icon>
+                    Download Encoded Image
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="center">
+              <mat-form-field class="text-area">
+                <mat-label>Plain Text</mat-label>
+                <textarea rows="3" matInput matTextareaAutosize [(ngModel)]="plainText"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="center">
+              <button mat-raised-button color="primary" (click)="encodeText()">Encode Text</button>
+              <button mat-raised-button (click)="clearForm()">Clear Form</button>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Decode">
+          <div class="encode-tab-main-body">
+            <div class="center">
+              <h2>Decode Text</h2>
+            </div>
+            <div class="center">
+              <div class="encode-tab-image-container">
+                <div class="center">
+                  <img class="image" [src]="originalImageName ? originalImageBase64Data : defaultImageFilePath" />
+                </div>
+                <div class="center" (click)="uploadFile.click();uploadFile.value=null">
+                  <button mat-raised-button color="primary">
+                    <mat-icon>upload</mat-icon>
+                    Upload Image
+                  </button>
+                  <input #uploadFile (change)="uploadOriginalImage($event.target.files[0])" type="file" accept="image/png, image/gif, image/jpeg" hidden />
+                </div>
+              </div>
+            </div>
+            <div class="center decode-image-buttons">
+              <button mat-raised-button color="primary" (click)="decodeText()">Decode Image</button>
+              <button mat-raised-button (click)="clearForm()">Clear Form</button>
+            </div>
+            <div class="center disable-decoded-text">
+              <mat-form-field class="text-area">
+                <mat-label style="font-size:20px">Decoded Text</mat-label>
+                <textarea rows="3" style="font-size:20px" matInput matTextareaAutosize [(ngModel)]="decodedText"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

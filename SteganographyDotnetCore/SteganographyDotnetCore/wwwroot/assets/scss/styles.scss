@@ -1,0 +1,131 @@
+@import 'shared/core';
+@import 'material/theming';
+
+@include mat-core();
+
+$blue-palette: ( 50: $white, 100: #dee2e6, 200: $blue, 300: $blue, 400: $blue, 500: $blue, 600: $blue, 700: $blue, 800: $blue, 900: $blue, A100: $blue, A200: $blue, A400: $blue, A700: $blue, contrast: ( 50: $black, 100: $black, 200: $white, 300: $white, 400: $white, 500: $white, 600: $white, 700: $white, 800: $white, 900: $white, A100: $white, A200: $white, A400: $white, A700: $white, ) ) !default;
+$app-primary: mat-palette($blue-palette);
+$app-accent: mat-palette($blue-palette);
+$app-warn: mat-palette($mat-red);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($app-theme);
+
+.main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  background-color: rgba(192,207,213,0.42);
+}
+
+.head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #e7eaf0;
+  background-color: #fff;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.19);
+}
+
+.head-container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.head-text {
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 2rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.body {
+  height: auto;
+}
+
+.body-container {
+  max-width: 1140px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.encode-tab-main-body {
+  height: auto;
+  padding: 10px;
+}
+
+.encode-tab-image-container {
+  width: 50%;
+  float: left;
+}
+
+.text-area {
+  width: 75%;
+  padding-top: 40px;
+}
+
+.center {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.decode-image-buttons {
+  padding-top: 50px;
+}
+
+.image {
+  height: 250px;
+  width: 333px;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.decoded-text-header {
+  width: 15%;
+  padding-top: 30px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.decoded-text {
+  width: 15%;
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.disable-decoded-text {
+  pointer-events: none;
+  opacity: 1;
+}
+
+.description-head {
+  padding: 10px;
+}
+
+.description-body {
+  padding: 10px;
+}

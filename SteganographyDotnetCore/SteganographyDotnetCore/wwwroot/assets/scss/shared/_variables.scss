@@ -1,0 +1,15 @@
+$blue: #005584 !default;
+$blue-light: #517cb6 !default;
+$orange: #ff9a01 !default;
+$primary: $blue !default;
+$secondary: $orange !default;
+$white: white !default;
+$black: black !default;
+
+$escaped-characters: (('<', '%3c'), ('>', '%3e'), ('#', '%23'), ('(', '%28'), (')', '%29')) !default;
+
+// sass-lint:disable quotes
+$svg-icons: () !default;
+$svg-icons: map-merge(( search: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='fillColor' d='M9.516 14.016c2.484 0 4.5-2.016 4.5-4.5s-2.016-4.5-4.5-4.5-4.5 2.016-4.5 4.5 2.016 4.5 4.5 4.5zM15.516 14.016l4.969 4.969-1.5 1.5-4.969-4.969v-0.797l-0.281-0.281c-1.125 0.984-2.625 1.547-4.219 1.547-3.609 0-6.516-2.859-6.516-6.469s2.906-6.516 6.516-6.516 6.469 2.906 6.469 6.516c0 1.594-0.563 3.094-1.547 4.219l0.281 0.281h0.797z'/></svg>")), $svg-icons);
+$svg-icons: map-merge(( transparent: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect fill='#bbbbbb' width='24' height='24'/><path fill='#f1f1f1' d='M0,4h4v4H0V4z M4,8h4v4H4V8z M8,12h4v4H8V12z M12,16h4v4h-4V16z M8,4h4v4H8V4z M16,12h4v4h-4V12z M16,4h4v4h-4 V4z M12,8h4v4h-4V8z M4,0h4v4H4V0z M12,0h4v4h-4V0z M0,12h4v4H0V12z M4,16h4v4H4V16z M8,20h4v4H8V20z M16,20h4v4h-4V20z M0,20h4v4H0 V20z M20,16h4v4h-4V16z M20,8h4v4h-4V8z M20,0h4v4h-4V0z'/></svg>")), $svg-icons);
+$svg-icons: map-merge(( pencil: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='fillColor' d='M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z'/></svg>")), $svg-icons);

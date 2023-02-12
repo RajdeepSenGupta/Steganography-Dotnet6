@@ -1,0 +1,42 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "steganography": {
+      "root": "wwwroot",
+      "sourceRoot": "",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "./wwwroot/dist/steganography",
+            "index": "./wwwroot/index.html",
+            "main": "./wwwroot/app/main.ts",
+            "polyfills": "./wwwroot/polyfills.ts",
+            "tsConfig": "./wwwroot/tsconfig.json",
+            "assets": [],
+            "styles": [],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "./wwwroot/environments/environment.ts",
+                  "with": "./wwwroot/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "extractCss": true,
+              "aot": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
